@@ -1,7 +1,7 @@
 <template>
   <div>
     <Tareas @enviandoTareas="cardTarea"/>
-    <Cards :listaTareas="datosTareas" @eliminarTareas="borrarTareas"/>
+    <Cards :listaTareas="datosTareas" @eliminarTarea="borrarTareas"/>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
       console.log(datos);
       this.datosTareas.push(datos);
     },
-     borrarCurso(index){
+     borrarTareas(index){
       this.datosTareas.splice(index,1);
     }
   },

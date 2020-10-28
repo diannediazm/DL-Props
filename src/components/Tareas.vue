@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section class="container my-2">
     <form @submit.prevent="enviarTareas">
       <div class="form-group">
         <label for="tarea">Ingresa una tarea</label>
@@ -16,10 +16,10 @@
         <input type="text" class="form-control" v-model="descripcion">
         <small id="emailHelp" class="form-text text-muted">Escribe aquí</small>
       </div>
+      <button type="reset" class="btn btn-warning text-white mr-4">Borrar todo</button>
       <button type="submit" class="btn btn-primary bg-info">Agregar tarea</button>
   </form>
-    
-  </div>
+  </section>
 </template>
 
 <script>
@@ -29,7 +29,8 @@
       return {
         tarea: '',
         imagen: '',
-        descripcion: ''
+        descripcion: '',
+        id: 1
       }
     },
     methods: {
@@ -38,12 +39,16 @@
           let listaTareas = {
             tarea: this.tarea,
             imagen: this.imagen,
-            descripcion: this.descripcion
+            descripcion: this.descripcion,
+            id: this.id++
         };
         this.$emit('enviandoTareas', listaTareas);
         this.titulo = "";
         this.imagen = "";
         this.descripcion = "";
+        }
+        else {
+          console.log("No hay datos");
         }
       }  
     },
